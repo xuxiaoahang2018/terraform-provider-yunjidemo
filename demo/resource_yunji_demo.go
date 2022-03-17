@@ -1,12 +1,13 @@
 package demo
 
 import (
-	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"io/ioutil"
-	"log"
 	"net/http"
+	"net/url"
+	"strings"
 )
 
 func resourceDemo() *schema.Resource {
@@ -25,7 +26,7 @@ func resourceDemo() *schema.Resource {
 				Description: "服务器名称",
 			},
 			"disk_size": &schema.Schema{
-				Type:        schema.TypeInt,
+				Type:        schema.TypeString,
 				Required:    true,
 				Description: "硬盘大小",
 			},
@@ -34,44 +35,89 @@ func resourceDemo() *schema.Resource {
 }
 
 func resourceDemoCreate(data *schema.ResourceData, meta interface{}) error {
-	body := &map[string]interface{}{
-		"instance_name":         data.Get("instance_name"),
-		"disk_size":           data.Get("head"),
-	}
-	bodyEncode, err := json.Marshal(*body)
-	if err != nil {
-		log.Fatal("fail to marshal message body")
-		return err
-	}
 	// 获取服务地址
 	conf := meta.(*Configuration)
 	endpoint := conf.endpoint
 
 	// 构造HTTP 请求，调用API接口
 	client := &http.Client{}
-	var bodyBuffer *bytes.Buffer
-	bodyBuffer = bytes.NewBuffer(bodyEncode)
-	request, err := http.NewRequest("POST", endpoint, bodyBuffer)
-	request.Header.Set("Content-Type", "application/json")
+	postData := url.Values{}
+	postData.Add("instance_name", data.Get("instance_name").(string))
+	postData.Add("disk_size", data.Get("disk_size").(string))
+	request, err := http.NewRequest("POST", endpoint, strings.NewReader(postData.Encode()))
+	if err != nil {
+		return err
+	}
+	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	response, err := client.Do(request)
 	_, readErr := ioutil.ReadAll(response.Body)
 	if readErr != nil {
-		log.Fatal(readErr)
+		return readErr
 	}
 	// code here to error handle
 	defer response.Body.Close()
 	data.SetId("weiyi_demo_id")
-	return nil
+	return resourceDemoRead(data, meta)
 }
 
 func resourceDemoRead(data *schema.ResourceData, meta interface{}) error {
+	conf := meta.(*Configuration)
+	endpoint := conf.endpoint
+	client := &http.Client{}
+	request, err := http.NewRequest("GET", fmt.Sprintf("%sget?id=%s",endpoint, data.Id()), nil)
+	if err != nil {
+		return err
+	}
+	response, err := client.Do(request)
+	if err != nil {
+		return err
+	}
+	body, readErr := ioutil.ReadAll(response.Body)
+	if readErr != nil {
+		return readErr
+	}
+	defer response.Body.Close()
+	var tempMap map[string]interface{}
+	json.Unmarshal(body, &tempMap)
+	data.Set("instance_name", tempMap["instance_name"])
+	data.Set("disk_size", tempMap["disk_size"])
 	return nil
 }
 
 func resourceDemoUpdate(data *schema.ResourceData, meta interface{}) error {
-	return nil
+	conf := meta.(*Configuration)
+	endpoint := conf.endpoint
+	postData := url.Values{}
+	if data.HasChange("instance_name") {
+		postData.Add("instance_name", data.Get("instance_name").(string))
+	}
+	if data.HasChange("disk_size") {
+		postData.Add("disk_size", data.Get("disk_size").(string))
+	}
+	client := &http.Client{}
+	request, err := http.NewRequest("PUT", fmt.Sprintf("%supdate?id=%s", endpoint, data.Id()),
+		strings.NewReader(postData.Encode()))
+	if err != nil {
+		return err
+	}
+	_, err = client.Do(request)
+	if err != nil {
+		return err
+	}
+	return resourceDemoRead(data, meta)
 }
 
 func resourceDemoDelete(data *schema.ResourceData, meta interface{}) error {
+	conf := meta.(*Configuration)
+	endpoint := conf.endpoint
+	client := &http.Client{}
+	request, err := http.NewRequest("DELETE", fmt.Sprintf("%sdelete?id=%s",endpoint, data.Id()), nil)
+	if err != nil {
+		return err
+	}
+	_, err = client.Do(request)
+	if err != nil {
+		return err
+	}
 	return nil
 }

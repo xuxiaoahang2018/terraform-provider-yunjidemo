@@ -7,11 +7,6 @@ import (
 	"net/http"
 )
 
-// Configuration struct
-type Configuration struct {
-	endpoint string
-}
-
 // Provider init  block
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
@@ -19,7 +14,8 @@ func Provider() terraform.ResourceProvider {
 			// provider arguments and their specifications go here
 			"endpoint": {
 				Type:        schema.TypeString,
-				Required:    true,
+				Optional:  true,
+				Default: "http://127.0.0.1:8888/",
 				DefaultFunc: schema.EnvDefaultFunc("GW_ENDPOINT", nil),
 				ValidateFunc: func(v interface{}, k string) (ws []string, errors []error) {
 					value := v.(string)
@@ -30,24 +26,20 @@ func Provider() terraform.ResourceProvider {
 					return
 				},
 			},
-			//"name": {
-			//	Type:        schema.TypeString,
-			//	Required:    true,
-			//
-			//},
-			//"password": {
-			//	Type:        schema.TypeString,
-			//	Required:    true,
-			//
-			//},
 		},
 		// map terraform dsl resources to functions
 		ResourcesMap: map[string]*schema.Resource{
-			"yunji_demo": resourceDemo(),
+			"yunjidemo_demo": resourceDemo(),
 		},
 		// provider configuration function
 		ConfigureFunc: configureProvider,
 	}
+}
+
+
+// Configuration struct
+type Configuration struct {
+	endpoint string
 }
 
 // configure provider options
@@ -68,5 +60,3 @@ func configureProvider(data *schema.ResourceData) (interface{}, error) {
 		endpoint: endpoint,
 	}, nil
 }
-
-func init() {}
