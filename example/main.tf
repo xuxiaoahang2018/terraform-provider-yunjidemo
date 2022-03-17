@@ -7,7 +7,7 @@ terraform {
 }
 
 resource "yunjidemo_demo" "test" {
-  instance_name  = "aini"
-  disk_size = 100
+  instance_name  = "yunji"
+  disk_size = "100"
 
 }
