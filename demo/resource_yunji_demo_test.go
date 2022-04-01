@@ -22,6 +22,7 @@ func TestAccYunjiDemo_basic(t *testing.T) {
 					resource.TestCheckResourceAttr("yunjidemo_demo.test", "disk_size", "100"),
 				),
 			},
+
 		},
 	})
 }

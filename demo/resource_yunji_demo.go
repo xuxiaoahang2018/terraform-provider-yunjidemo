@@ -56,6 +56,7 @@ func resourceDemoCreate(data *schema.ResourceData, meta interface{}) error {
 	}
 	// code here to error handle
 	defer response.Body.Close()
+	// TODO
 	data.SetId("weiyi_demo_id")
 	return resourceDemoRead(data, meta)
 }
