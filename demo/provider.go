@@ -30,6 +30,10 @@ func Provider() terraform.ResourceProvider {
 		// map terraform dsl resources to functions
 		ResourcesMap: map[string]*schema.Resource{
 			"yunjidemo_demo": resourceDemo(),
+
+		},
+		DataSourcesMap: map[string]*schema.Resource{
+			"yunjidemo_account": dataSourceYunjiAccount(),
 		},
 		// provider configuration function
 		ConfigureFunc: configureProvider,

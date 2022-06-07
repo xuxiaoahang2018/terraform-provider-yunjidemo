@@ -33,6 +33,17 @@ def delete_Data():
         return jsonify(recognize_info), 200
     abort(400)
 
+@app.route("/data_source", methods=["GET"])
+def data_source():
+    if request.args.get("name") == "ecs":
+        rep = {"name": "ecs",
+               "id" : "ecs_id",
+               }
+        return jsonify(rep), 200
+    return jsonify({}), 200
+
+
+
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8888)
     
