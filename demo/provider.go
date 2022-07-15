@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
-	"net/http"
 )
 
 // Provider init  block
@@ -22,13 +21,13 @@ func Provider() terraform.ResourceProvider {
 					if value == "" {
 						errors = append(errors, fmt.Errorf("Endpoint must not be an empty string"))
 					}
-
 					return
 				},
 			},
 		},
 		// map terraform dsl resources to functions
 		ResourcesMap: map[string]*schema.Resource{
+			// 这里命名格式是provider 名称+ 下划线 + 资源名称，其他命名方式provider将无法正确找到函数路径。
 			"yunjidemo_demo": resourceDemo(),
 
 		},
@@ -50,15 +49,6 @@ type Configuration struct {
 func configureProvider(data *schema.ResourceData) (interface{}, error) {
 	// pass options from terraform DSL to the client
 	endpoint := data.Get("endpoint").(string)
-
-	// test endpoint
-	_, err := http.Get(endpoint)
-	if err != nil {
-		return nil, fmt.Errorf("Error connect to gateway ")
-	}
-	if err != nil {
-		return nil, err
-	}
 	// code to error handle
 	return &Configuration{
 		endpoint: endpoint,

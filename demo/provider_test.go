@@ -14,6 +14,7 @@ var testAccProvider *schema.Provider
 func init() {
 	testAccProvider = Provider().(*schema.Provider)
 	testAccProviders = map[string]terraform.ResourceProvider{
+		// init 测试这里需要填入provider 名称
 		"yunjidemo": testAccProvider,
 	}
 }

@@ -1,13 +1,24 @@
+import json
+import uuid
 from flask import request, Flask, jsonify, abort
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 recognize_info = {}
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/create', methods=['POST', 'GET'])
 def post_Data():
-    recognize_info["instance_name"] = request.form['instance_name']
-    recognize_info["disk_size"] = request.form['disk_size']
+    # 获取传入的参数
+    get_Data=request.get_data()
+    # 传入的参数为bytes类型，需要转化成json
+    get_Data=json.loads(get_Data)
+    recognize_info["instance_name"] = get_Data.get('instance_name')
+    recognize_info["disk_size"] = get_Data.get('disk_size')
+    recognize_info["networks"] = get_Data.get('networks')
+    recognize_info["memory"] = get_Data.get('memory')
+    recognize_info["config_json"] = get_Data.get('config_json')
+    recognize_info["set_demo"] = get_Data.get('set_demo')
+    recognize_info["uuid"] = uuid.uuid1()
     return jsonify(recognize_info), {"create_success": 200}
 
 @app.route('/get', methods=['GET'])
@@ -20,10 +31,21 @@ def get_Data():
 def update_Data():
     if request.args.get("id") != "weiyi_demo_id":
         abort(400)
-    if request.form['instance_name']:
-        recognize_info["instance_name"] = request.form['instance_name']
-    if request.form['disk_size']:
-        recognize_info["disk_size"] = request.form['disk_size']
+    get_Data=request.get_data()
+    # 传入的参数为bytes类型，需要转化成json
+    get_Data=json.loads(get_Data)
+    if get_Data.get('instance_name'):
+        recognize_info["instance_name"] = get_Data.get('instance_name')
+    if get_Data.get('disk_size'):
+        recognize_info["disk_size"] = get_Data.get('disk_size')
+    if get_Data.get('networks'):
+        recognize_info["networks"] = get_Data.get('networks')
+    if get_Data.get('memory'):
+        recognize_info["memory"] = get_Data.get('memory')
+    if get_Data.get('config_json'):
+        recognize_info["config_json"] = get_Data.get('config_json')
+    if get_Data.get("set_demo"):
+        recognize_info["set_demo"] = get_Data.get('set_demo')
     return jsonify(recognize_info), 200
 
 @app.route('/delete', methods=['DELETE'])
