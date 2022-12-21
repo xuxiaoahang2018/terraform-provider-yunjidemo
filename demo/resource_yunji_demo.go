@@ -8,6 +8,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/validation"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"time"
 )
@@ -27,15 +28,15 @@ func resourceDemo() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			// 首先terraform 的变量名只支持小驼峰命名，并且只支持小写
 			"instance_name": &schema.Schema{
-				Type:        schema.TypeString,
-				Required:    true,
+				Type:     schema.TypeString,
+				Required: true,
 				// ForceNew 参数，意味着该参数不可改变，当改变该参数，会把整个资源会删除重建，注意所有的ForceNew 参数
 				// 一定要在文档中给予标注，否则不予以merge 代码及发布。请重视！
 				ForceNew:    true,
 				Description: "服务器名称",
 			},
 			"disk_size": &schema.Schema{
-				Type:        schema.TypeInt,
+				Type: schema.TypeInt,
 				// Required/Optional 该参数是否必填，在文档中也必须标注！
 				Required:    true,
 				Description: "硬盘大小",
@@ -60,8 +61,8 @@ func resourceDemo() *schema.Resource {
 			// map 类型不要在嵌套list, map, set等复杂类型，里面key 只能使用string基础类型
 			// 参考 https://www.terraform.io/plugin/sdkv2/schemas/schema-types#typemap
 			"memory": {
-				Type:     schema.TypeMap,
-				Optional: true,
+				Type:        schema.TypeMap,
+				Optional:    true,
 				Description: "内存",
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
@@ -78,18 +79,18 @@ func resourceDemo() *schema.Resource {
 			},
 			// 当我们传入的是一个json 类型，但是这个json的内容是可变的不确定的，我们就可以用string
 			// 字段来接收这个可变的json.
-			"config_json":{
-				Type:     schema.TypeString,
-				Optional: true,
-				ValidateFunc:validation.StringIsJSON,
-				Description: "自定义配置",
+			"config_json": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ValidateFunc: validation.StringIsJSON,
+				Description:  "自定义配置",
 			},
-			"uuid":{
-				Type:     schema.TypeString,
+			"uuid": {
+				Type: schema.TypeString,
 				// computed 参数定义一般是需要服务端计算返回的不确定值，例如uuid, 时间戳等等，
 				// 这种参数在使用main.tf 编写hcl 时候无需传入，但是我们要在查询方法里面，根据服务端查询获得的值
 				// 将返回值Set 回tfstate 种。
-				Computed: true,
+				Computed:    true,
 				Description: "自定义配置",
 			},
 			"set_demo": {
@@ -102,7 +103,6 @@ func resourceDemo() *schema.Resource {
 							Type:     schema.TypeString,
 							Optional: true,
 						},
-
 					},
 				},
 			},
@@ -167,7 +167,11 @@ func resourceDemoCreate(d *schema.ResourceData, meta interface{}) error {
 	wait := IncrementalWait(3*time.Second, 5*time.Second)
 	response := &http.Response{}
 	// 所有的 API 请求都要使用 设置重试的时间和场景。 包括下面的READ, UPDATE, DELETE
-	err = resource.Retry(5*time.Minute, func() *resource.RetryError{
+	err = resource.Retry(5*time.Minute, func() *resource.RetryError {
+		log.Println("[YUNJI] 开始创建了")
+		fmt.Println("------------")
+		fmt.Println(request.Body)
+		fmt.Println("------------")
 		response, err = client.Do(request)
 		if err != nil {
 			if NeedRetry(response.StatusCode, err) {
@@ -188,6 +192,7 @@ func resourceDemoCreate(d *schema.ResourceData, meta interface{}) error {
 	defer response.Body.Close()
 	// 这里要注意， SetId 的目的是为了给资源一个唯一id， 下面的read, update和delete 都需要
 	// 通过这里Set的唯一id 去查询， 所以创建资源这里必须SetId,
+
 	d.SetId("weiyi_demo_id")
 
 	return resourceDemoRead(d, meta)
@@ -197,11 +202,18 @@ func resourceDemoCreate(d *schema.ResourceData, meta interface{}) error {
 func resourceDemoRead(data *schema.ResourceData, meta interface{}) error {
 	conf := meta.(*Configuration)
 	client := &http.Client{}
+	log.Println("[YUNJI] 创建成功开始等待")
+
 	// 这里我们就通过创建时候Set 的Set的资源唯一id去对资源进行查询。
-	request, err := http.NewRequest("GET", fmt.Sprintf("%sget?id=%s",conf.endpoint, data.Id()), nil)
+	request, err := http.NewRequest("GET", fmt.Sprintf("%sget?id=%s", conf.endpoint, data.Id()), nil)
 	if err != nil {
 		return WrapError(err)
 	}
+	fmt.Println("#1", request.Method)
+	//fmt.Println("#2", request.GetBody)
+	fmt.Println("#3", request.URL)
+	fmt.Println("#4", request.Body)
+
 	response, err := client.Do(request)
 	if err != nil {
 		return WrapError(err)
@@ -311,9 +323,11 @@ func resourceDemoUpdate(data *schema.ResourceData, meta interface{}) error {
 func resourceDemoDelete(data *schema.ResourceData, meta interface{}) error {
 	conf := meta.(*Configuration)
 	endpoint := conf.endpoint
+	uuid := data.Get("uuid")
+	fmt.Println("uuid: ", uuid)
 	client := &http.Client{}
 	// 这里我们依旧根据 Create 方法里面设置的资源的唯一ID 去删除资源。
-	request, err := http.NewRequest("DELETE", fmt.Sprintf("%sdelete?id=%s",endpoint, data.Id()), nil)
+	request, err := http.NewRequest("DELETE", fmt.Sprintf("%sdelete?id=%s", endpoint, data.Id()), nil)
 	if err != nil {
 		return WrapError(err)
 	}
@@ -325,15 +339,15 @@ func resourceDemoDelete(data *schema.ResourceData, meta interface{}) error {
 }
 
 type YunjiDemo struct {
-	InstanceName string `json:"instance_name"`
-	DiskSize     int    `json:"disk_size"`
+	InstanceName string    `json:"instance_name"`
+	DiskSize     int       `json:"disk_size"`
 	Networks     []Network `json:"networks"`
-	Memory struct {
-		MemorySize string    `json:"memory_size"`
+	Memory       struct {
+		MemorySize string `json:"memory_size"`
 		MemoryUnit string `json:"memory_unit"`
 	} `json:"memory"`
-	ConfigJson string `json:"config_json"`
-	SetDemo []SetDemo `json:"set_demo"`
+	ConfigJson string    `json:"config_json"`
+	SetDemo    []SetDemo `json:"set_demo"`
 }
 
 type Network struct {

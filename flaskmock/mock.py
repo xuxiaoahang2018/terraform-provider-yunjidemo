@@ -65,6 +65,9 @@ def data_source():
     return jsonify({}), 200
 
 
+@app.route("/index", methods=["GET"])
+def index():
+    return "hello world"
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8888)

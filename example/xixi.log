@@ -1,0 +1,386 @@
+2022-10-27T15:36:02.013+0800 [INFO]  Terraform version: 1.3.2
+2022-10-27T15:36:02.013+0800 [DEBUG] using github.com/hashicorp/go-tfe v1.9.0
+2022-10-27T15:36:02.013+0800 [DEBUG] using github.com/hashicorp/hcl/v2 v2.14.1
+2022-10-27T15:36:02.013+0800 [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2022-10-27T15:36:02.013+0800 [DEBUG] using github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
+2022-10-27T15:36:02.013+0800 [DEBUG] using github.com/zclconf/go-cty v1.11.0
+2022-10-27T15:36:02.013+0800 [INFO]  Go runtime version: go1.19.1
+2022-10-27T15:36:02.013+0800 [INFO]  CLI args: []string{"terraform", "apply"}
+2022-10-27T15:36:02.013+0800 [TRACE] Stdout is a terminal of width 232
+2022-10-27T15:36:02.013+0800 [TRACE] Stderr is a terminal of width 232
+2022-10-27T15:36:02.013+0800 [TRACE] Stdin is a terminal
+2022-10-27T15:36:02.013+0800 [DEBUG] Attempting to open CLI config file: /Users/idcos/.terraformrc
+2022-10-27T15:36:02.013+0800 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2022-10-27T15:36:02.013+0800 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2022-10-27T15:36:02.013+0800 [DEBUG] ignoring non-existing provider search directory /Users/idcos/.terraform.d/plugins
+2022-10-27T15:36:02.013+0800 [DEBUG] ignoring non-existing provider search directory /Users/idcos/Library/Application Support/io.terraform/plugins
+2022-10-27T15:36:02.013+0800 [DEBUG] ignoring non-existing provider search directory /Library/Application Support/io.terraform/plugins
+2022-10-27T15:36:02.014+0800 [INFO]  CLI command args: []string{"apply"}
+2022-10-27T15:36:02.023+0800 [ERROR] Checkpoint error: Get "https://checkpoint-api.hashicorp.com/v1/check/terraform?arch=arm64&os=darwin&signature=69949403-476c-1f7f-1155-c7d91778f3e6&version=1.3.2": proxyconnect tcp: dial tcp 127.0.0.1:7890: connect: connection refused
+2022-10-27T15:36:02.024+0800 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2022-10-27T15:36:02.024+0800 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2022-10-27T15:36:02.024+0800 [DEBUG] New state was assigned lineage "e83b9126-bf00-f009-4ef0-ec650a3bad7c"
+2022-10-27T15:36:02.024+0800 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2022-10-27T15:36:02.024+0800 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2022-10-27T15:36:02.024+0800 [TRACE] providercache.fillMetaCache: scanning directory .terraform/providers
+2022-10-27T15:36:02.024+0800 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/yunji/yunjidemo v1.0.0 for darwin_arm64 at .terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64
+2022-10-27T15:36:02.024+0800 [TRACE] providercache.fillMetaCache: including .terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64 as a candidate package for registry.terraform.io/yunji/yunjidemo 1.0.0
+2022-10-27T15:36:02.051+0800 [DEBUG] checking for provisioner in "/Users/idcos/.terraform.d/plugin-cache"
+2022-10-27T15:36:02.051+0800 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2022-10-27T15:36:02.052+0800 [INFO]  backend/local: starting Apply operation
+2022-10-27T15:36:02.052+0800 [TRACE] backend/local: requesting state manager for workspace "default"
+2022-10-27T15:36:02.052+0800 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2022-10-27T15:36:02.052+0800 [TRACE] backend/local: requesting state lock for workspace "default"
+2022-10-27T15:36:02.054+0800 [TRACE] statemgr.Filesystem: preparing to manage state snapshots at terraform.tfstate
+2022-10-27T15:36:02.055+0800 [TRACE] statemgr.Filesystem: existing snapshot has lineage "2e525c6b-9405-3578-5d7f-571c5b46738f" serial 2
+2022-10-27T15:36:02.055+0800 [TRACE] statemgr.Filesystem: locking terraform.tfstate using fcntl flock
+2022-10-27T15:36:02.056+0800 [TRACE] statemgr.Filesystem: writing lock metadata to .terraform.tfstate.lock.info
+2022-10-27T15:36:02.056+0800 [TRACE] backend/local: reading remote state for workspace "default"
+2022-10-27T15:36:02.056+0800 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2022-10-27T15:36:02.056+0800 [TRACE] statemgr.Filesystem: read snapshot with lineage "2e525c6b-9405-3578-5d7f-571c5b46738f" serial 2
+2022-10-27T15:36:02.056+0800 [TRACE] backend/local: populating backend.LocalRun for current working directory
+2022-10-27T15:36:02.056+0800 [TRACE] Config.VerifyDependencySelections: provider registry.terraform.io/yunji/yunjidemo has 1.0.0 to satisfy ""
+2022-10-27T15:36:02.056+0800 [TRACE] terraform.NewContext: starting
+2022-10-27T15:36:02.056+0800 [TRACE] terraform.NewContext: complete
+2022-10-27T15:36:02.056+0800 [TRACE] backend/local: requesting interactive input, if necessary
+2022-10-27T15:36:02.056+0800 [TRACE] LoadSchemas: retrieving schema for provider type "registry.terraform.io/yunji/yunjidemo"
+2022-10-27T15:36:02.056+0800 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/yunji/yunjidemo" to read its schema
+2022-10-27T15:36:02.056+0800 [DEBUG] created provider logger: level=trace
+2022-10-27T15:36:02.056+0800 [INFO]  provider: configuring client automatic mTLS
+2022-10-27T15:36:02.065+0800 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo args=[.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo]
+2022-10-27T15:36:02.067+0800 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo pid=8644
+2022-10-27T15:36:02.067+0800 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo
+2022-10-27T15:36:02.082+0800 [INFO]  provider.terraform-provider-yunjidemo: configuring server automatic mTLS: timestamp=2022-10-27T15:36:02.082+0800
+2022-10-27T15:36:02.091+0800 [DEBUG] provider: using plugin: version=5
+2022-10-27T15:36:02.091+0800 [DEBUG] provider.terraform-provider-yunjidemo: plugin address: address=/var/folders/gp/xc50972d5jbdkvzjtzqq41zh0000gn/T/plugin2375294060 network=unix timestamp=2022-10-27T15:36:02.091+0800
+2022-10-27T15:36:02.097+0800 [TRACE] GRPCProvider: GetProviderSchema
+2022-10-27T15:36:02.097+0800 [TRACE] provider.stdio: waiting for stdio data
+2022-10-27T15:36:02.098+0800 [DEBUG] No provider meta schema returned
+2022-10-27T15:36:02.098+0800 [TRACE] GRPCProvider: Close
+2022-10-27T15:36:02.099+0800 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2022-10-27T15:36:02.099+0800 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo pid=8644
+2022-10-27T15:36:02.099+0800 [DEBUG] provider: plugin exited
+2022-10-27T15:36:02.099+0800 [TRACE] Context.Input: Prompting for provider arguments
+2022-10-27T15:36:02.099+0800 [TRACE] Context.Input: Provider provider.yunjidemo implied by resource block at main.tf:9,1-33
+2022-10-27T15:36:02.099+0800 [TRACE] Context.Input: Input for provider.yunjidemo: map[string]cty.Value{}
+2022-10-27T15:36:02.099+0800 [TRACE] backend/local: running validation operation
+2022-10-27T15:36:02.099+0800 [DEBUG] Building and walking validate graph
+2022-10-27T15:36:02.099+0800 [TRACE] building graph for walkValidate
+2022-10-27T15:36:02.099+0800 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2022-10-27T15:36:02.099+0800 [TRACE] ConfigTransformer: Starting for path:
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+  ------
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.RootVariableTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.LocalTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.OutputTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.StateTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] StateTransformer: pointless no-op call, creating no nodes at all
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.StateTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] AttachResourceConfigTransformer: attaching to "yunjidemo_demo.test" (*terraform.NodeValidatableResource) config from main.tf:9,1-33
+2022-10-27T15:36:02.100+0800 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to yunjidemo_demo.test
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+  ------
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/yunji/yunjidemo"] serving yunjidemo_demo.test
+2022-10-27T15:36:02.100+0800 [DEBUG] ProviderTransformer: "yunjidemo_demo.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] AttachSchemaTransformer: attaching resource schema to yunjidemo_demo.test
+2022-10-27T15:36:02.100+0800 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.ModuleExpansionTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.ModuleExpansionTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2022-10-27T15:36:02.100+0800 [DEBUG] ReferenceTransformer: "yunjidemo_demo.test" references: []
+2022-10-27T15:36:02.100+0800 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/yunji/yunjidemo\"]" references: []
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.AttachDependenciesTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.AttachDependenciesTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.attachDataResourceDependsOnTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.attachDataResourceDependsOnTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.DestroyEdgeTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.DestroyEdgeTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.pruneUnusedNodesTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.pruneUnusedNodesTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+    yunjidemo_demo.test - *terraform.NodeValidatableResource
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.CloseRootModuleTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.CloseRootModuleTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+    yunjidemo_demo.test - *terraform.NodeValidatableResource
+  root - *terraform.nodeCloseModule
+    provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.100+0800 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2022-10-27T15:36:02.100+0800 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+    yunjidemo_demo.test - *terraform.NodeValidatableResource
+  root - *terraform.nodeCloseModule
+    provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+  yunjidemo_demo.test - *terraform.NodeValidatableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.100+0800 [DEBUG] Starting graph walk: walkValidate
+2022-10-27T15:36:02.101+0800 [TRACE] vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"]": starting visit (*terraform.NodeApplyableProvider)
+2022-10-27T15:36:02.101+0800 [DEBUG] created provider logger: level=trace
+2022-10-27T15:36:02.101+0800 [INFO]  provider: configuring client automatic mTLS
+2022-10-27T15:36:02.104+0800 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo args=[.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo]
+2022-10-27T15:36:02.105+0800 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo pid=8645
+2022-10-27T15:36:02.105+0800 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo
+2022-10-27T15:36:02.114+0800 [INFO]  provider.terraform-provider-yunjidemo: configuring server automatic mTLS: timestamp=2022-10-27T15:36:02.114+0800
+2022-10-27T15:36:02.123+0800 [DEBUG] provider: using plugin: version=5
+2022-10-27T15:36:02.123+0800 [DEBUG] provider.terraform-provider-yunjidemo: plugin address: address=/var/folders/gp/xc50972d5jbdkvzjtzqq41zh0000gn/T/plugin2970842215 network=unix timestamp=2022-10-27T15:36:02.123+0800
+2022-10-27T15:36:02.129+0800 [TRACE] BuiltinEvalContext: Initialized "provider[\"registry.terraform.io/yunji/yunjidemo\"]" provider for provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.129+0800 [TRACE] NodeApplyableProvider: validating configuration for provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.129+0800 [TRACE] provider.stdio: waiting for stdio data
+2022-10-27T15:36:02.129+0800 [TRACE] buildProviderConfig for provider["registry.terraform.io/yunji/yunjidemo"]: no configuration at all
+2022-10-27T15:36:02.129+0800 [TRACE] vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"]": visit complete
+2022-10-27T15:36:02.129+0800 [TRACE] vertex "yunjidemo_demo.test": starting visit (*terraform.NodeValidatableResource)
+2022-10-27T15:36:02.129+0800 [TRACE] GRPCProvider: ValidateResourceConfig
+2022-10-27T15:36:02.129+0800 [TRACE] GRPCProvider: GetProviderSchema
+2022-10-27T15:36:02.129+0800 [DEBUG] No provider meta schema returned
+2022-10-27T15:36:02.130+0800 [TRACE] vertex "yunjidemo_demo.test": visit complete
+2022-10-27T15:36:02.130+0800 [TRACE] vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"] (close)": starting visit (*terraform.graphNodeCloseProvider)
+2022-10-27T15:36:02.130+0800 [TRACE] GRPCProvider: Close
+2022-10-27T15:36:02.130+0800 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2022-10-27T15:36:02.130+0800 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo pid=8645
+2022-10-27T15:36:02.130+0800 [DEBUG] provider: plugin exited
+2022-10-27T15:36:02.130+0800 [TRACE] vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"] (close)": visit complete
+2022-10-27T15:36:02.130+0800 [TRACE] vertex "root": starting visit (*terraform.nodeCloseModule)
+2022-10-27T15:36:02.130+0800 [TRACE] vertex "root": visit complete
+2022-10-27T15:36:02.130+0800 [TRACE] LoadSchemas: retrieving schema for provider type "registry.terraform.io/yunji/yunjidemo"
+2022-10-27T15:36:02.130+0800 [INFO]  backend/local: apply calling Plan
+2022-10-27T15:36:02.130+0800 [DEBUG] Building and walking plan graph for NormalMode
+2022-10-27T15:36:02.130+0800 [TRACE] building graph for walkPlan
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] ConfigTransformer: Starting for path:
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+  ------
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.RootVariableTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.LocalTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.OutputTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.StateTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] StateTransformer: creating nodes for deposed instance objects only
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.StateTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] AttachResourceConfigTransformer: attaching to "yunjidemo_demo.test (expand)" (*terraform.nodeExpandPlannableResource) config from main.tf:9,1-33
+2022-10-27T15:36:02.130+0800 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to yunjidemo_demo.test (expand)
+2022-10-27T15:36:02.130+0800 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2022-10-27T15:36:02.130+0800 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2022-10-27T15:36:02.130+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+  ------
+2022-10-27T15:36:02.130+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2022-10-27T15:36:02.130+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/yunji/yunjidemo"] serving yunjidemo_demo.test (expand)
+2022-10-27T15:36:02.131+0800 [DEBUG] ProviderTransformer: "yunjidemo_demo.test (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.131+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.131+0800 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] AttachSchemaTransformer: attaching resource schema to yunjidemo_demo.test (expand)
+2022-10-27T15:36:02.131+0800 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.ModuleExpansionTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.ModuleExpansionTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2022-10-27T15:36:02.131+0800 [DEBUG] ReferenceTransformer: "yunjidemo_demo.test (expand)" references: []
+2022-10-27T15:36:02.131+0800 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/yunji/yunjidemo\"]" references: []
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.AttachDependenciesTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] AttachDependenciesTransformer: yunjidemo_demo.test depends on []
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.AttachDependenciesTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.attachDataResourceDependsOnTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.attachDataResourceDependsOnTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.DestroyEdgeTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.DestroyEdgeTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.pruneUnusedNodesTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.pruneUnusedNodesTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] ForcedCBDTransformer: "yunjidemo_demo.test (expand)" (*terraform.nodeExpandPlannableResource) has no CBD descendent, so skipping
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+    yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.CloseRootModuleTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.CloseRootModuleTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+    yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+  root - *terraform.nodeCloseModule
+    provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.131+0800 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2022-10-27T15:36:02.131+0800 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+    yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+  root - *terraform.nodeCloseModule
+    provider["registry.terraform.io/yunji/yunjidemo"] (close) - *terraform.graphNodeCloseProvider
+  yunjidemo_demo.test (expand) - *terraform.nodeExpandPlannableResource
+    provider["registry.terraform.io/yunji/yunjidemo"] - *terraform.NodeApplyableProvider
+  ------
+2022-10-27T15:36:02.131+0800 [DEBUG] Starting graph walk: walkPlan
+2022-10-27T15:36:02.131+0800 [TRACE] vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"]": starting visit (*terraform.NodeApplyableProvider)
+2022-10-27T15:36:02.131+0800 [DEBUG] created provider logger: level=trace
+2022-10-27T15:36:02.131+0800 [INFO]  provider: configuring client automatic mTLS
+2022-10-27T15:36:02.134+0800 [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo args=[.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo]
+2022-10-27T15:36:02.135+0800 [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo pid=8646
+2022-10-27T15:36:02.136+0800 [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo
+2022-10-27T15:36:02.144+0800 [INFO]  provider.terraform-provider-yunjidemo: configuring server automatic mTLS: timestamp=2022-10-27T15:36:02.144+0800
+2022-10-27T15:36:02.153+0800 [DEBUG] provider: using plugin: version=5
+2022-10-27T15:36:02.153+0800 [DEBUG] provider.terraform-provider-yunjidemo: plugin address: network=unix address=/var/folders/gp/xc50972d5jbdkvzjtzqq41zh0000gn/T/plugin3582315506 timestamp=2022-10-27T15:36:02.153+0800
+2022-10-27T15:36:02.159+0800 [TRACE] BuiltinEvalContext: Initialized "provider[\"registry.terraform.io/yunji/yunjidemo\"]" provider for provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.159+0800 [TRACE] NodeApplyableProvider: configuring provider["registry.terraform.io/yunji/yunjidemo"]
+2022-10-27T15:36:02.159+0800 [TRACE] provider.stdio: waiting for stdio data
+2022-10-27T15:36:02.159+0800 [TRACE] buildProviderConfig for provider["registry.terraform.io/yunji/yunjidemo"]: no configuration at all
+2022-10-27T15:36:02.159+0800 [TRACE] GRPCProvider: GetProviderSchema
+2022-10-27T15:36:02.160+0800 [DEBUG] No provider meta schema returned
+2022-10-27T15:36:02.160+0800 [TRACE] GRPCProvider: ValidateProviderConfig
+2022-10-27T15:36:02.160+0800 [WARN]  ValidateProviderConfig from "provider[\"registry.terraform.io/yunji/yunjidemo\"]" changed the config value, but that value is unused
+2022-10-27T15:36:02.160+0800 [TRACE] GRPCProvider: ConfigureProvider
+2022-10-27T15:36:02.160+0800 [TRACE] vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"]": visit complete
+2022-10-27T15:36:02.160+0800 [TRACE] vertex "yunjidemo_demo.test (expand)": starting visit (*terraform.nodeExpandPlannableResource)
+2022-10-27T15:36:02.160+0800 [TRACE] vertex "yunjidemo_demo.test (expand)": expanding dynamic subgraph
+2022-10-27T15:36:02.160+0800 [TRACE] Executing graph transform *terraform.ResourceCountTransformer
+2022-10-27T15:36:02.160+0800 [TRACE] ResourceCountTransformer: adding yunjidemo_demo.test as *terraform.NodePlannableResourceInstance
+2022-10-27T15:36:02.160+0800 [TRACE] Completed graph transform *terraform.ResourceCountTransformer with new graph:
+  yunjidemo_demo.test - *terraform.NodePlannableResourceInstance
+  ------
+2022-10-27T15:36:02.160+0800 [TRACE] Executing graph transform *terraform.OrphanResourceInstanceCountTransformer
+2022-10-27T15:36:02.160+0800 [TRACE] Completed graph transform *terraform.OrphanResourceInstanceCountTransformer (no changes)
+2022-10-27T15:36:02.160+0800 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2022-10-27T15:36:02.160+0800 [TRACE] NodeAbstractResourceInstance.AttachResourceState for yunjidemo_demo.test
+2022-10-27T15:36:02.160+0800 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2022-10-27T15:36:02.160+0800 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2022-10-27T15:36:02.160+0800 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2022-10-27T15:36:02.160+0800 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2022-10-27T15:36:02.160+0800 [DEBUG] ReferenceTransformer: "yunjidemo_demo.test" references: []
+2022-10-27T15:36:02.160+0800 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2022-10-27T15:36:02.160+0800 [TRACE] Executing graph transform *terraform.RootTransformer
+2022-10-27T15:36:02.160+0800 [TRACE] Completed graph transform *terraform.RootTransformer (no changes)
+2022-10-27T15:36:02.160+0800 [TRACE] vertex "yunjidemo_demo.test (expand)": entering dynamic subgraph
+2022-10-27T15:36:02.160+0800 [TRACE] vertex "yunjidemo_demo.test": starting visit (*terraform.NodePlannableResourceInstance)
+2022-10-27T15:36:02.160+0800 [TRACE] readResourceInstanceState: reading state for yunjidemo_demo.test
+2022-10-27T15:36:02.160+0800 [TRACE] upgradeResourceState: schema version of yunjidemo_demo.test is still 0; calling provider "yunjidemo" for any other minor fixups
+2022-10-27T15:36:02.161+0800 [TRACE] GRPCProvider: UpgradeResourceState
+2022-10-27T15:36:02.161+0800 [TRACE] NodeAbstractResouceInstance.writeResourceInstanceState to prevRunState for yunjidemo_demo.test
+2022-10-27T15:36:02.161+0800 [TRACE] NodeAbstractResouceInstance.writeResourceInstanceState: writing state object for yunjidemo_demo.test
+2022-10-27T15:36:02.161+0800 [TRACE] NodeAbstractResouceInstance.writeResourceInstanceState to refreshState for yunjidemo_demo.test
+2022-10-27T15:36:02.161+0800 [TRACE] NodeAbstractResouceInstance.writeResourceInstanceState: writing state object for yunjidemo_demo.test
+2022-10-27T15:36:02.161+0800 [TRACE] NodeAbstractResourceInstance.refresh for yunjidemo_demo.test
+2022-10-27T15:36:02.161+0800 [TRACE] GRPCProvider: ReadResource
+2022-10-27T15:36:02.162+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:02 [YUNJI] 创建成功开始等待
+2022-10-27T15:36:02.162+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:02 [YUNji ]开始轮训, 当前次数 1
+2022-10-27T15:36:03.167+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:03 [YUNji ]开始轮训, 当前次数 2
+2022-10-27T15:36:04.172+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:04 [YUNji ]开始轮训, 当前次数 3
+2022-10-27T15:36:05.177+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:05 [YUNji ]开始轮训, 当前次数 4
+2022-10-27T15:36:06.180+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:06 [YUNji ]开始轮训, 当前次数 5
+2022-10-27T15:36:07.134+0800 [TRACE] dag/walk: vertex "provider[\"registry.terraform.io/yunji/yunjidemo\"] (close)" is waiting for "yunjidemo_demo.test (expand)"
+2022-10-27T15:36:07.134+0800 [TRACE] dag/walk: vertex "root" is waiting for "provider[\"registry.terraform.io/yunji/yunjidemo\"] (close)"
+2022-10-27T15:36:07.181+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:07 [YUNji ]开始轮训, 当前次数 6
+2022-10-27T15:36:08.186+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:08 [YUNji ]开始轮训, 当前次数 7
+2022-10-27T15:36:09.189+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:09 [YUNji ]开始轮训, 当前次数 8
+2022-10-27T15:36:10.189+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:10 [YUNji ]开始轮训, 当前次数 9
+2022-10-27T15:36:11.194+0800 [DEBUG] provider.terraform-provider-yunjidemo: 2022/10/27 15:36:11 [YUNji ]开始轮训, 当前次数 10
+2022-10-27T15:36:11.195+0800 [ERROR] vertex "yunjidemo_demo.test" error: 轮训抛错
+2022-10-27T15:36:11.195+0800 [TRACE] vertex "yunjidemo_demo.test": visit complete, with errors
+2022-10-27T15:36:11.195+0800 [TRACE] vertex "yunjidemo_demo.test (expand)": dynamic subgraph encountered errors: 轮训抛错
+2022-10-27T15:36:11.195+0800 [ERROR] vertex "yunjidemo_demo.test (expand)" error: 轮训抛错
+2022-10-27T15:36:11.195+0800 [TRACE] vertex "yunjidemo_demo.test (expand)": visit complete, with errors
+2022-10-27T15:36:11.195+0800 [TRACE] dag/walk: upstream of "provider[\"registry.terraform.io/yunji/yunjidemo\"] (close)" errored, so skipping
+2022-10-27T15:36:11.195+0800 [TRACE] dag/walk: upstream of "root" errored, so skipping
+2022-10-27T15:36:11.197+0800 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2022-10-27T15:36:11.198+0800 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+2022-10-27T15:36:11.199+0800 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2022-10-27T15:36:11.200+0800 [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/yunji/yunjidemo/1.0.0/darwin_arm64/terraform-provider-yunjidemo pid=8646
+2022-10-27T15:36:11.200+0800 [DEBUG] provider: plugin exited
